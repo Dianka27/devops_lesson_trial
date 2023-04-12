@@ -1,0 +1,25 @@
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Terraform Apply') {
+            steps {
+                  sh 'Hello world'
+ //               sh 'terraform init'
+ //               sh 'terraform apply -auto-approve'
+            }
+        }
+
+        stage('Ansible Provisioning') {
+            environment {
+                ANSIBLE_HOST_KEY_CHECKING = "false"
+            }
+            steps {
+                  sh 'Hello'
+ //               sh 'ansible-playbook -i inventory playbook.yml'
+            }
+        }
+    }
+
